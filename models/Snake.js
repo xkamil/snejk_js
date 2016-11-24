@@ -1,4 +1,4 @@
-var Direction = require("./../direction");
+var Direction = require("./Direction");
 
 function Snake(length, direction, startPosition) {
     this.length = length;
@@ -43,7 +43,7 @@ Snake.prototype.move = function () {
 
 Snake.prototype.feed = function () {
     this.feeded = true;
-}
+};
 
 module.exports = Snake;
 

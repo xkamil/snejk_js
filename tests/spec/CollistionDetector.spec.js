@@ -1,24 +1,34 @@
-require('jasmine-expect');
-require('jasmine');
-
 var Food = require('../../models/Food');
 var Snake = require('../../models/Snake');
-var Direction = require('../../direction');
-var CollisionDetector  = require('../../models/CollistionDetector');
+var Direction = require('../../models/Direction');
+var BoardWall = require('../../models/BoardWall');
+var DetectCollision  = require('../../models/CollisionDetector');
 
 describe('Collistion detector ', function () {
 
     it('should return true if object are colliding', function () {
-        var collisionDetector = new CollisionDetector();
-        var food = new Food(20,20);
-        var snake = new Snake(3, Direction.LEFT, {x : 3, Y : 3});
+        var food = new Food(5,5);
+        var snake = new Snake(1, Direction.LEFT, {x : 3, y : 3});
+        var board = new BoardWall(6);
         food.moveTo(3,4);
 
-        expect(collisionDetector.detectCollision(food,snake)).toBeFalse();
+        expect(DetectCollision(food,snake)).toEqual(false);
 
         food.moveTo(3,3);
 
-        expect(collisionDetector.detectCollision(food,snake)).toBeTrue();
+        expect(DetectCollision(food,snake)).toEqual(true);
+
+        food.moveTo(-1,-1);
+
+        expect(DetectCollision(food,board)).toEqual(true);
+
+        food.moveTo(1,1);
+
+        expect(DetectCollision(food,board)).toEqual(false);
+
+        food.moveTo(5,5);
+
+        expect(DetectCollision(food,board)).toEqual(false);
     });
 
 });

@@ -1,8 +1,5 @@
-require('jasmine-expect');
-require('jasmine');
-
 var Snake = require('../../models/Snake');
-var Direction = require('../../direction');
+var Direction = require('../../models/Direction');
 
 describe('Snake ', function () {
 

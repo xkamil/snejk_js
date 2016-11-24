@@ -1,6 +1,3 @@
-require('jasmine-expect');
-require('jasmine');
-
 var Food = require('../../models/Food');
 
 describe('Food ', function () {
@@ -11,8 +8,8 @@ describe('Food ', function () {
         for(var i = 0; i < 30; i++){
             food.relocate();
 
-            expect(food.parts[0].x <= 2 && food.parts[0].x >= 0).toBeTrue();
-            expect(food.parts[0].y <= 2 && food.parts[0].y >= 0).toBeTrue();
+            expect(food.parts[0].x <= 2 && food.parts[0].x >= 0).toEqual(true);
+            expect(food.parts[0].y <= 2 && food.parts[0].y >= 0).toEqual(true);
         }
     });
 
